@@ -27,10 +27,11 @@ public class mainClass extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(450, 550));
+        setPreferredSize(new java.awt.Dimension(500, 600));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
         setTitle("Calculator - Java Swing - Stupid Dog");
+        setFocusTraversalKeysEnabled(false);
         
         labelCalculator.setBackground(new Color(0, 0, 0));
         labelCalculator.setFont(new Font("Verdana", 1, 30)); 
@@ -38,32 +39,27 @@ public class mainClass extends JFrame {
         labelCalculator.setHorizontalAlignment(SwingConstants.CENTER);
         labelCalculator.setText("CALCULATOR");
         labelCalculator.setOpaque(true);
-        labelCalculator.setPreferredSize(new Dimension(400, 50));
+        labelCalculator.setPreferredSize(new Dimension(480, 50));
         getContentPane().add(labelCalculator);
 
-        ScreenUserInterface.setBackground(new java.awt.Color(204, 204, 255));
-        ScreenUserInterface.setPreferredSize(new java.awt.Dimension(400, 160));
+        ScreenUserInterface.setPreferredSize(new java.awt.Dimension(450, 150));
         ScreenUserInterface.setLayout(new java.awt.GridLayout(2, 0, 0, 20));
 
-        screenInput.setFont(new java.awt.Font("Verdana", 0, 30)); 
+        screenInput.setFont(new java.awt.Font("Courier New", Font.BOLD, 30)); 
         screenInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         screenInput.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 3, true));
-        screenInput.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        screenInput.setPreferredSize(new java.awt.Dimension(370, 60));
         screenInput.setSelectedTextColor(Color.WHITE);
         screenInput.setSelectionColor(Color.DARK_GRAY);
 
         addScreenInputEvent();
         
         screenOutput.setEditable(false);
-        screenOutput.setFont(new java.awt.Font("Verdana", 0, 30)); 
+        screenOutput.setFont(new java.awt.Font("Courier New", Font.BOLD, 30)); 
         screenOutput.setForeground(new java.awt.Color(0, 51, 204));
         screenOutput.setOpaque(true);
         screenOutput.setBackground(Color.WHITE);
         screenOutput.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         screenOutput.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 3, true));
-        screenOutput.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        screenOutput.setPreferredSize(new java.awt.Dimension(370, 60));
         screenOutput.setSelectedTextColor(Color.WHITE);
         screenOutput.setSelectionColor(Color.DARK_GRAY);
         
@@ -71,64 +67,41 @@ public class mainClass extends JFrame {
         ScreenUserInterface.add(screenOutput);
         getContentPane().add(ScreenUserInterface);
         
-        ButtonUserInterface.setBackground(new java.awt.Color(204, 204, 255));
-        ButtonUserInterface.setAlignmentX(10.0F);
-        ButtonUserInterface.setAlignmentY(10.0F);
-        ButtonUserInterface.setPreferredSize(new java.awt.Dimension(400, 250));
-        ButtonUserInterface.setLayout(new java.awt.GridLayout(4, 4, 10, 10));
+        ButtonUserInterface.setPreferredSize(new java.awt.Dimension(420, 270));
+        ButtonUserInterface.setLayout(new java.awt.GridLayout(0, 5, 10, 10));
         
-        for (int i = 0; i < 20; i++) {
-            b[i] = new JButton();
-            b[i].setText(strB[i]);
+        for (int i = 0; i < stringButton.length; i++) {
+            b[i] = new JButton(stringButton[i]);
             b[i].setFont(new java.awt.Font("Verdana", 1, 25)); 
-            b[i].setForeground(new java.awt.Color(0, 0, 0));
             b[i].setMargin(new java.awt.Insets(0, 0, 0, 0));
-            b[i].setPreferredSize(new java.awt.Dimension(70, 50));
+            b[i].setForeground(Color.black);
         }
-        for(int i=10;i<=12;i++) b[i].setForeground(new java.awt.Color(0, 0, 204));
-        for(int i=13;i<=16;i++) b[i].setForeground(new java.awt.Color(204, 0, 0));
-        b[17].setForeground(new java.awt.Color(255, 0, 0));
-        b[18].setForeground(new java.awt.Color(200, 0, 0));
-        b[19].setForeground(new java.awt.Color(0, 0, 204));
+        
+        b[10].setForeground(new Color(0,50,162));
+        b[11].setForeground(new Color(0,50,162));
+        b[12].setForeground(new Color(0,50,162));
+        b[19].setForeground(new Color(200, 0, 0));
+        for(int i=13;i<=16;i++) b[i].setForeground(new Color(200, 0, 0));
+        b[17].setForeground(Color.red);
+        b[18].setForeground(Color.red);
         b[10].setFont(new java.awt.Font("Verdana", 1, 35));
         b[13].setFont(new java.awt.Font("Verdana", 1, 30));
         b[14].setFont(new java.awt.Font("Verdana", 1, 40));
         b[15].setFont(new java.awt.Font("Verdana", 1, 30));
-        b[17].setFont(new java.awt.Font("Verdana", 1, 23));
-        b[18].setFont(new java.awt.Font("Verdana", 1, 23));
         b[19].setFont(new java.awt.Font("Verdana", 1, 30));
-        
+
         addButtonEvent();
         
-        ButtonUserInterface.add(b[7]);
-        ButtonUserInterface.add(b[8]);
-        ButtonUserInterface.add(b[9]);
-        ButtonUserInterface.add(b[18]);
-        ButtonUserInterface.add(b[17]);
-        ButtonUserInterface.add(b[4]);
-        ButtonUserInterface.add(b[5]);
-        ButtonUserInterface.add(b[6]);
-        ButtonUserInterface.add(b[15]);
-        ButtonUserInterface.add(b[16]);
-        ButtonUserInterface.add(b[1]);
-        ButtonUserInterface.add(b[2]);
-        ButtonUserInterface.add(b[3]);
-        ButtonUserInterface.add(b[13]);
-        ButtonUserInterface.add(b[14]);
-        ButtonUserInterface.add(b[0]);
-        ButtonUserInterface.add(b[10]);
-        ButtonUserInterface.add(b[19]);
-        ButtonUserInterface.add(b[11]);
-        ButtonUserInterface.add(b[12]);
+        for (int i = 0; i < stringButton.length; i++) ButtonUserInterface.add(b[orderButtonDisplay[i]]);
         getContentPane().add(ButtonUserInterface);
         
         copyright.setBackground(new Color(0, 0, 0));
-        copyright.setFont(new Font("Verdana", 1, 18)); 
+        copyright.setFont(new Font("Verdana", 1, 23)); 
         copyright.setForeground(new Color(0, 255, 0));
         copyright.setHorizontalAlignment(SwingConstants.CENTER);
-        copyright.setText("COPYRIGHT STUPID-DOG");
+        copyright.setText("COPYRIGHT © STUPID-DOG");
         copyright.setOpaque(true);
-        copyright.setPreferredSize(new Dimension(400, 35));
+        copyright.setPreferredSize(new Dimension(480, 50));
         getContentPane().add(copyright);
     }
     
@@ -137,7 +110,7 @@ public class mainClass extends JFrame {
         int pos = screenInput.getCaretPosition();
         cur.insert(pos, add);
         screenInput.setText(new String(cur));
-        screenInput.setCaretPosition(pos+1);
+        screenInput.setCaretPosition(pos+add.length());
     }
     
     private void addScreenInputEvent() {
@@ -148,12 +121,12 @@ public class mainClass extends JFrame {
                 char c = e.getKeyChar(); 
                 String sc = Character.toString(c);
                 for (int i = 0; i < 17; i++) {
-                    if (sc.equals(strB[i])) {
+                    if (sc.equals(stringButton[i])) {
                         updateScreenInput(sc); break;
                     }
                 }
                 if (c == '*') updateScreenInput("x");
-                if (c == KeyEvent.VK_ENTER) {
+                if (c == '=' || c == KeyEvent.VK_ENTER) {
                     String exp = screenInput.getText();
                     screenOutput.setText(new solveExpression(exp).Answer());
                 }
@@ -163,7 +136,7 @@ public class mainClass extends JFrame {
     
     private void addButtonEvent() {
         for (int i = 0; i <= 16; i++) {
-            String g = strB[i];
+            String g = stringButton[i];
             b[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -209,18 +182,35 @@ public class mainClass extends JFrame {
     private javax.swing.JLabel copyright;
     private javax.swing.JTextField screenInput;
     private javax.swing.JTextField screenOutput;
-    private JButton b[] = new JButton[20];
-    public String strB[] = {"0","1","2","3","4","5","6","7","8","9",".","(",")","+","-","x","/","AC","DEL","="};
+    private String stringButton[] = {"0","1","2","3","4","5","6","7","8","9",
+                                    ".","(",")","+","-","x","/","AC","DEL","="};
+    private JButton b[] = new JButton[stringButton.length];
+    private int orderButtonDisplay[] = {
+        7,  8,  9,  18, 17,
+        4,  5,  6,  15, 16,
+        1,  2,  3,  13, 14,
+        0,  10, 19, 11, 12,
+    };
+
     /**
-     * 10 : DOT
-     * 11 : OPEN
-     * 12 : CLOSE
-     * 13 : PLUS
-     * 14 : SUB
-     * 15 : MUL
-     * 16 : DIV
-     * 17 : AC
-     * 18 : DEL
-     * 19 : EQUAL
+     * 0 -> 9 : 0 -> 9
+     * 10 : DOT         
+     * 11 : OPEN            
+     * 12 : CLOSE           
+     * 13 : PLUS        
+     * 14 : SUB                 
+     * 15 : MUL         
+     * 16 : DIV         
+     * 17 : AC         
+     * 18 : DEL        
+     * 19 : EQUAL      
+     * 
+     * 
+     * 7  8  9  DE AC
+     * 4  5  6  x  /
+     * 1  2  3  +  -
+     * 0  DT =  (  )
+     * 
+     * .
      */
 }
